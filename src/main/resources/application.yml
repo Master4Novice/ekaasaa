@@ -1,0 +1,6 @@
+spring:
+  graphql:
+    schema:
+      location: classpath:/graphql/**/
+    graphiql:
+      enable: true

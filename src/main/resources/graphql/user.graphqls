@@ -1,0 +1,26 @@
+input UserIn {
+    firstName: String
+    middleName: String
+    lastName: String
+}
+
+type UserOut {
+    id: String
+    firstName: String
+    middleName: String
+    lastName: String
+}
+
+type Query {
+    getUser(id : ID!): UserOut
+}
+
+type Mutation {
+    putUser(user: UserIn!): String
+    updateUser(id: ID!, user: UserIn): UserOut
+    deleteUser(id: ID!): String
+}
+
+type Subscription {
+    userSub: String
+}
