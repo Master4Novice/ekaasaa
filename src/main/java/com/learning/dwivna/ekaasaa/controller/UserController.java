@@ -1,7 +1,7 @@
 package com.learning.dwivna.ekaasaa.controller;
 
 import com.learning.dwivna.ekaasaa.service.UserService;
-import com.learning.dwivna.ekaasaa.vo.UserVO;
+import com.learning.dwivna.ekaasaa.data.User;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -22,17 +22,17 @@ public class UserController {
     }
 
     @QueryMapping
-    public Mono<UserVO> getUser(@Argument String id) {
+    public Mono<User> getUser(@Argument String id) {
         return this.userService.getUser(id);
     }
 
     @MutationMapping
-    public Mono<String> putUser(@Argument UserVO user) {
+    public Mono<String> putUser(@Argument User user) {
         return this.userService.putUser(user);
     }
 
     @MutationMapping
-    public Mono<UserVO> updateUser(@Argument String id, @Argument UserVO user) {
+    public Mono<User> updateUser(@Argument String id, @Argument User user) {
         return this.userService.updateUser(id, user);
     }
 

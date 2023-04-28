@@ -1,15 +1,15 @@
 package com.learning.dwivna.ekaasaa.service;
 
-import com.learning.dwivna.ekaasaa.vo.UserVO;
+import com.learning.dwivna.ekaasaa.data.User;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Mono;
 
 public interface UserService {
-    Mono<UserVO> getUser(String id);
+    Mono<User> getUser(String id);
 
-    Mono<String> putUser(UserVO user);
+    Mono<String> putUser(User user);
 
-    Mono<UserVO> updateUser(String id, UserVO user);
+    Mono<User> updateUser(String id, User user);
 
     Mono<String> deleteUser(String id);
 
