@@ -4,3 +4,7 @@ spring:
       location: classpath:/graphql/**/
     graphiql:
       enable: true
+    websocket:
+      path: /graphql
+user:
+  topic: sub:user:1

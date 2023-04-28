@@ -13,6 +13,7 @@ type UserOut {
 
 type Query {
     getUser(id : ID!): UserOut
+    getUsers: [UserOut]
 }
 
 type Mutation {
@@ -22,5 +23,5 @@ type Mutation {
 }
 
 type Subscription {
-    userSub: String
+    userSub: [UserOut]
 }
