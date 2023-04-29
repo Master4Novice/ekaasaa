@@ -51,16 +51,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Mono<User> updateUser(String id, User user) {
-        Mono<User> userMono = redisValueUserOperations.get(id);
-        User existUser = userMono.block();
-        if (existUser != null) {
-            existUser.setFirstName(user.getFirstName());
-            existUser.setMiddleName(user.getMiddleName());
-            existUser.setLastName(user.getLastName());
-            redisValueUserOperations.set(id, existUser);
-            return Mono.just(existUser);
-        }
-        return Mono.empty();
+        user.setId(id);
+        redisValueUserOperations.getAndSet(id, user).block();
+        return Mono.just(user);
     }
 
     @Override

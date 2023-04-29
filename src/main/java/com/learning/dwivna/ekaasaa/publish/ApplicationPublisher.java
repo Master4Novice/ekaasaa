@@ -1,6 +1,7 @@
 package com.learning.dwivna.ekaasaa.publish;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.learning.dwivna.ekaasaa.data.User;
 import com.learning.dwivna.ekaasaa.service.PublisherService;
 import com.learning.dwivna.ekaasaa.service.UserService;
@@ -31,12 +32,12 @@ public class ApplicationPublisher {
         List<String> keys = reactiveUserRedisTemplate.keys("*").collectList().block();
         List<User> userList = new ArrayList<>();
         if (keys != null && !keys.isEmpty()) {
-            log.info("Size of fetched keys is {}", keys.size());
             keys.forEach(key -> {
                 userList.add(userService.getUser(key).block());
             });
         }
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().create();
+        log.info("Size of fetched keys is {}", userList.size());
         publisherService.publish(gson.toJson(userList));
     }
 }

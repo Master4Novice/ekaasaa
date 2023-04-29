@@ -1,27 +1,29 @@
-input UserIn {
-    firstName: String
+input User {
+    firstName: String!
     middleName: String
-    lastName: String
+    lastName: String!
+    incomes: [Income!]
 }
 
-type UserOut {
-    id: String
+type UserData {
+    id: String!
     firstName: String
     middleName: String
     lastName: String
+    incomes: [IncomeData!]
 }
 
 type Query {
-    getUser(id : ID!): UserOut
-    getUsers: [UserOut]
+    getUser(id : ID!): UserData
+    getUsers: [UserData]
 }
 
 type Mutation {
-    putUser(user: UserIn!): String
-    updateUser(id: ID!, user: UserIn): UserOut
+    putUser(user: User!): String
+    updateUser(id: ID!, user: User): UserData
     deleteUser(id: ID!): String
 }
 
 type Subscription {
-    userSub: [UserOut]
+    userSub: [UserData]
 }

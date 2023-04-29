@@ -1,8 +1,11 @@
 package com.learning.dwivna.ekaasaa.data;
 
+import com.learning.dwivna.ekaasaa.vo.IncomeVO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,4 +24,6 @@ public class User {
     private String middleName;
 
     private String lastName;
+
+    private List<IncomeVO> incomes;
 }

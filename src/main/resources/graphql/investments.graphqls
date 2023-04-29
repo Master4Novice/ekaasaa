@@ -1,0 +1,12 @@
+"Investment of the user for inputs"
+input Investment {
+    "Salary slips on basis of credit date"
+    salaries: [Salary]
+}
+
+"Investment of the user for display"
+type InvestmentData {
+    id: ID
+    "Salary slips on basis of credit date"
+    salaries: [SalaryData]
+}

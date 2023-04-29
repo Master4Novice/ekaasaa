@@ -1,0 +1,50 @@
+"Monthly salary of a person"
+input Salary {
+    basicPay: Float!
+    specialAllowance: Float!
+    houseRentAllowance: Float!
+    otherAllowance: Float!
+    "Deductions from the salary"
+    deductions: [Deduction!]
+    "Date of credit in format YYYY-MM-DD"
+    creditDate: String!
+}
+
+type SalaryData {
+    basicPay: Float
+    specialAllowance: Float
+    houseRentAllowance: Float
+    otherAllowance: Float
+    "Deductions from the salary"
+    deductions: [DeductionData]
+    "Date of credit in format YYYY-MM-DD"
+    creditDate: String!
+}
+
+"Deduction to be made from salary"
+input Deduction {
+    "Deduction towards"
+    towards: String!
+    "Deduction amount"
+    amount: Float!
+}
+
+"Deduction data from salary"
+type DeductionData {
+    "Deduction towards"
+    towards: String
+    "Deduction amount"
+    amount: Float
+}
+
+"Income of the user for inputs"
+input Income {
+    "Salary slips on basis of credit date"
+    salaries: [Salary!]
+}
+
+"Income of the user for display"
+type IncomeData {
+    "Salary slips on basis of credit date"
+    salaries: [SalaryData!]
+}

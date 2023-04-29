@@ -1,0 +1,12 @@
+"Saving of the user for inputs"
+input Saving {
+    "Salary slips on basis of credit date"
+    salaries: [Salary]
+}
+
+"Saving of the user for display"
+type SavingData {
+    id: ID
+    "Salary slips on basis of credit date"
+    salaries: [SalaryData]
+}
