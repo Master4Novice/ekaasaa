@@ -24,3 +24,5 @@ hs_err_pid*
 replay_pid*
 /target/
 /.idea/
+/ui/node_modules/
+/ui/package-lock.json

@@ -1,5 +1,6 @@
 package com.learning.dwivna.ekaasaa.data;
 
+import com.learning.dwivna.ekaasaa.vo.SalaryVO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
@@ -12,21 +13,14 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Builder
-@RedisHash("user")
-public class User {
+@RedisHash("user-income")
+public class Income {
 
     @Id
     private String id;
 
-    private String firstName;
+    private String userId;
 
-    private String middleName;
+    private List<SalaryVO> salaries;
 
-    private String lastName;
-
-    private List<Income> incomes;
-
-    private Saving savings;
-
-    private List<Expense> expenses;
 }

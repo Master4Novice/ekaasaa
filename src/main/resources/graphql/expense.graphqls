@@ -1,0 +1,33 @@
+enum ExpenseType {
+  Need
+  Want
+}
+
+"Expanse of the user for inputs"
+input Expense {
+    "Type of the expense"
+    typeOf: ExpenseType
+    "Expense date"
+    dateOf: String
+    "Category of expense"
+    category: String
+    "Expense For"
+    expenseFor: String
+    "Expense Amount"
+    amount: Float
+}
+
+"Expense of the user for display"
+type ExpenseData {
+    id: ID!
+    "Type of the expense"
+    typeOf: ExpenseType
+    "Expense date"
+    dateOf: String
+    "Category of expense"
+    category: String
+    "Expense For"
+    expenseFor: String
+    "Expense Amount"
+    amount: Float
+}

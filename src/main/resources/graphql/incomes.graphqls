@@ -45,6 +45,7 @@ input Income {
 
 "Income of the user for display"
 type IncomeData {
+    id: ID!
     "Salary slips on basis of credit date"
     salaries: [SalaryData!]
 }

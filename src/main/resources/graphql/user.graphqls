@@ -2,7 +2,6 @@ input User {
     firstName: String!
     middleName: String
     lastName: String!
-    incomes: [Income!]
 }
 
 type UserData {
@@ -10,7 +9,9 @@ type UserData {
     firstName: String
     middleName: String
     lastName: String
-    incomes: [IncomeData!]
+    incomes: [IncomeData]
+    savings: SavingData
+    expenses: [ExpenseData]
 }
 
 type Query {
@@ -22,6 +23,15 @@ type Mutation {
     putUser(user: User!): String
     updateUser(id: ID!, user: User): UserData
     deleteUser(id: ID!): String
+    putUserIncomes(userId: ID!, incomes: [Income!]): String
+    updateUserIncomes(userId: ID!, incomes: [Income!]): UserData
+    deleteUserIncome(id: ID!): String
+    putUserSavings(userId: ID!, savings: Saving!): String
+    updateUserSavings(userId: ID!, savings: Saving!): UserData
+    deleteUserSaving(id: ID!): String
+    putUserExpenses(userId: ID!, expenses: [Expense!]): String
+    updateUserExpenses(userId: ID!, expenses: [Expense!]): UserData
+    deleteUserExpense(id: ID!): String
 }
 
 type Subscription {

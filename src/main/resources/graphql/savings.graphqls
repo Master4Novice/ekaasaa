@@ -1,12 +1,47 @@
+"Type of the account"
+enum AccountType {
+    BankAccount
+    Wallet
+    Cash
+}
+
+enum Operation {
+  Credit
+  Debt
+}
+
+"Account detail of the person"
+input Account {
+    "Type of the account"
+    typeOf: AccountType!
+    "Account Number/Name/Wallet/Cash"
+    accountName:String!
+    credit: Float
+    balance: Float!
+    debit: Float
+    date: String!
+    operation: Operation!
+}
+
+"Account detail of the person for display"
+type AccountData {
+    accountName: String
+    balance: Float
+}
+
 "Saving of the user for inputs"
 input Saving {
-    "Salary slips on basis of credit date"
-    salaries: [Salary]
+    "Account Balances/Storages"
+    accounts: [Account]
+    "Deduction for saving schemes/investments"
+    deductions: [Deduction]
 }
 
 "Saving of the user for display"
 type SavingData {
-    id: ID
-    "Salary slips on basis of credit date"
-    salaries: [SalaryData]
+    id: ID!
+    "Account details of the user"
+    accounts: [AccountData]
+    "Deduction for saving schemes/investments"
+    deductions: [DeductionData]
 }
