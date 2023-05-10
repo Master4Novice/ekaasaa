@@ -3,6 +3,7 @@ package com.learning.dwivna.ekaasaa.data;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 @Getter
 @Setter
@@ -14,6 +15,7 @@ import org.springframework.data.redis.core.RedisHash;
 public class Expense {
 
     @Id
+    @Indexed
     private String id;
 
     private String userId;

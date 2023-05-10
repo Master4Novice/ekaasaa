@@ -5,7 +5,7 @@ input User {
 }
 
 type UserData {
-    id: String!
+    id: String
     firstName: String
     middleName: String
     lastName: String
@@ -20,8 +20,8 @@ type Query {
 }
 
 type Mutation {
-    putUser(user: User!): String
-    updateUser(id: ID!, user: User): UserData
+    putUser(user: User!): UserData
+    updateUser(id: ID!, user: User!): UserData
     deleteUser(id: ID!): String
     putUserIncomes(userId: ID!, incomes: [Income!]): String
     updateUserIncomes(userId: ID!, incomes: [Income!]): UserData

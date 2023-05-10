@@ -23,9 +23,6 @@ public class SavingServiceImpl implements SavingService {
     private ReactiveRedisTemplate<String, User> reactiveUserRedisTemplate;
 
     @Autowired
-    private ReactiveValueOperations<String, User> redisValueUserOperations;
-
-    @Autowired
     private ReactiveRedisMessageListenerContainer reactiveMsgListenerContainer;
 
     @Autowired

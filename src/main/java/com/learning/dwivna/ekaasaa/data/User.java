@@ -3,8 +3,11 @@ package com.learning.dwivna.ekaasaa.data;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
+import javax.annotation.processing.Generated;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,6 +19,7 @@ import java.util.List;
 public class User {
 
     @Id
+    @Indexed
     private String id;
 
     private String firstName;
@@ -24,9 +28,9 @@ public class User {
 
     private String lastName;
 
-    private List<Income> incomes;
+    private Set<Income> incomes;
 
     private Saving savings;
 
-    private List<Expense> expenses;
+    private Set<Expense> expenses;
 }

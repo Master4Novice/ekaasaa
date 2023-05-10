@@ -4,6 +4,7 @@ import com.learning.dwivna.ekaasaa.vo.SalaryVO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class Income {
 
     @Id
+    @Indexed
     private String id;
 
     private String userId;

@@ -6,6 +6,7 @@ import com.learning.dwivna.ekaasaa.data.Income;
 import com.learning.dwivna.ekaasaa.data.User;
 import com.learning.dwivna.ekaasaa.service.IncomeService;
 import com.learning.dwivna.ekaasaa.service.PublisherService;
+import com.learning.dwivna.ekaasaa.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
@@ -23,9 +24,6 @@ public class IncomeServiceImpl implements IncomeService {
 
     @Autowired
     private ReactiveRedisTemplate<String, User> reactiveUserRedisTemplate;
-
-    @Autowired
-    private ReactiveValueOperations<String, User> redisValueUserOperations;
 
     @Autowired
     private ReactiveRedisMessageListenerContainer reactiveMsgListenerContainer;

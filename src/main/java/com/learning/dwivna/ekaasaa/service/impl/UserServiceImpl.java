@@ -4,6 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.learning.dwivna.ekaasaa.data.User;
+import com.learning.dwivna.ekaasaa.exceptions.UserAddFailedException;
+import com.learning.dwivna.ekaasaa.exceptions.UserNotDeletedException;
+import com.learning.dwivna.ekaasaa.exceptions.UserNotFoundException;
+import com.learning.dwivna.ekaasaa.repositories.UserRepository;
 import com.learning.dwivna.ekaasaa.service.PublisherService;
 import com.learning.dwivna.ekaasaa.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +24,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -28,12 +31,6 @@ import java.util.UUID;
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
-
-    @Autowired
-    private ReactiveRedisTemplate<String, User> reactiveUserRedisTemplate;
-
-    @Autowired
-    private ReactiveValueOperations<String, User> redisValueUserOperations;
 
     @Autowired
     private ReactiveRedisMessageListenerContainer reactiveMsgListenerContainer;
@@ -44,34 +41,34 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PublisherService publisherService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     private final Gson gson = new GsonBuilder().create();
 
     @Override
     public Mono<User> getUser(String id) {
-        return redisValueUserOperations.get(id);
+        return userRepository.findById(id);
     }
 
     @Override
     public Mono<List<User>> getUsers() {
-        return reactiveUserRedisTemplate.keys("*").collectList().flatMap(keyList -> reactiveUserRedisTemplate.opsForValue().multiGet(keyList));
+        return userRepository.findAll();
     }
 
     @Override
-    public Mono<String> putUser(User user) {
-        user.setId(UUID.randomUUID().toString());
-        return redisValueUserOperations.set(user.getId(), user).flatMap(res -> res ? Mono.just(String.format("User added with ID:{%s}", user.getId())) : Mono.just("User addition failed"));
+    public Mono<User> putUser(User user) {
+        return userRepository.save(user);
     }
 
     @Override
     public Mono<User> updateUser(String id, User user) {
-        user.setId(id);
-        redisValueUserOperations.getAndSet(id, user).subscribe();
-        return Mono.just(user);
+        return userRepository.update(id,user);
     }
 
     @Override
     public Mono<String> deleteUser(String id) {
-        return redisValueUserOperations.delete(id).flatMap(res -> res ? Mono.just(String.format("User deleted having ID:{%s}", id)) : Mono.just("User deletion failed"));
+        return userRepository.deleteById(id);
     }
 
     @Override
@@ -86,7 +83,7 @@ public class UserServiceImpl implements UserService {
         publisherService.publish(gson.toJson(userList));
     }
 
-    private Flux<String> getSubscriptionMessage(){
+    private Flux<String> getSubscriptionMessage() {
         return reactiveMsgListenerContainer.receive(this.channelTopic)
                 .map(ReactiveSubscription.Message::getMessage)
                 .map(msg -> {

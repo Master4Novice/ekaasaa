@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserService {
     Mono<User> getUser(String id);
 
-    Mono<String> putUser(User user);
+    Mono<User> putUser(User user);
 
     Mono<User> updateUser(String id, User user);
 
