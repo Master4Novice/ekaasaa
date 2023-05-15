@@ -35,7 +35,7 @@ env:
   ECR_REPOSITORY: dwina/ekaasaa-repo           # set this to your Amazon ECR repository name
   ECS_SERVICE: arn:aws:ecs:ap-south-1:248275317690:service/dwivna-dev-1/ekaasaa-service                 # set this to your Amazon ECS service name
   ECS_CLUSTER: arn:aws:ecs:ap-south-1:248275317690:cluster/dwivna-dev-1                # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: dwivna-dev:1 # set this to the path to your Amazon ECS task definition
+  ECS_TASK_DEFINITION: dwivna-dev       # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: ekaa-saa-con           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
