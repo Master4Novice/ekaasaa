@@ -32,7 +32,7 @@ on:
 
 env:
   AWS_REGION: ap-south-1                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: z8a7n5u3/dwina/ekaasaa-repo           # set this to your Amazon ECR repository name
+  ECR_REPOSITORY: dwina/ekaasaa-repo           # set this to your Amazon ECR repository name
   ECS_SERVICE: arn:aws:ecs:ap-south-1:248275317690:service/dwivna-dev-1/ekaasaa-service                 # set this to your Amazon ECS service name
   ECS_CLUSTER: arn:aws:ecs:ap-south-1:248275317690:cluster/dwivna-dev-1                # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: arn:aws:ecs:ap-south-1:248275317690:task-definition/dwivna-dev:1 # set this to the path to your Amazon ECS task definition
