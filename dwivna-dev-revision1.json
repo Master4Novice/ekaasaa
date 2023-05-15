@@ -1,5 +1,6 @@
 {
     "taskDefinitionArn": "arn:aws:ecs:ap-south-1:248275317690:task-definition/dwivna-dev:1",
+    "ExecutionRoleArn" : "arn:aws:ecs:ap-south-1:248275317690:task-definition/dwivna-dev:1",
     "containerDefinitions": [
         {
             "name": "ekaa-saa-con",
