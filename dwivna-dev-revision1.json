@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:248275317690:task-definition/dwivna-dev:1",
+    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:248275317690:task-definition/dwivna-dev:2",
     "containerDefinitions": [
         {
             "name": "ekaa-saa-con",
@@ -13,11 +13,16 @@
         }
     ],
     "family": "dwivna-dev",
+    "taskRoleArn": "arn:aws:iam::248275317690:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::248275317690:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 2,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
         },
@@ -35,7 +40,7 @@
     ],
     "cpu": "1024",
     "memory": "3072",
-    "registeredAt": "2023-05-15T17:36:07.878Z",
+    "registeredAt": "2023-05-15T21:06:30.024Z",
     "registeredBy": "arn:aws:iam::248275317690:user/dwivna",
     "tags": []
 }
