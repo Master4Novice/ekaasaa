@@ -4,9 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.learning.dwivna.ekaasaa.data.User;
-import com.learning.dwivna.ekaasaa.exceptions.UserAddFailedException;
-import com.learning.dwivna.ekaasaa.exceptions.UserNotDeletedException;
-import com.learning.dwivna.ekaasaa.exceptions.UserNotFoundException;
 import com.learning.dwivna.ekaasaa.repositories.UserRepository;
 import com.learning.dwivna.ekaasaa.service.PublisherService;
 import com.learning.dwivna.ekaasaa.service.UserService;
@@ -14,8 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.ReactiveSubscription;
-import org.springframework.data.redis.core.ReactiveRedisTemplate;
-import org.springframework.data.redis.core.ReactiveValueOperations;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.ReactiveRedisMessageListenerContainer;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -26,7 +21,6 @@ import reactor.core.publisher.Mono;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 @Service
 @Slf4j

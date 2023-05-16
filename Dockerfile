@@ -1,14 +1,14 @@
 # Fetching latest version of Java
-FROM openjdk:18
- 
+FROM openjdk:21-slim
+
 # Setting up work directory
-WORKDIR /ekaasaa-service
+WORKDIR ekaasaa-service
 
 # Copy the jar file into our app
-COPY ./target/ekaasaa-0.0.1-SNAPSHOT.jar /ekaasaa-service
+COPY ./target/ekaasaa-0.0.1-SNAPSHOT.jar ekaasaa-service
 
-# Exposing port 8080
+# Exposing port 8082
 EXPOSE 8082
 
 # Starting the application
-CMD ["java", "-jar", "ekaasaa-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-Dspring.profiles.active=local", "-jar", "ekaasaa-0.0.1-SNAPSHOT.jar"]

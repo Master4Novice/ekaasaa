@@ -18,7 +18,7 @@ public class UserRedisConfiguration implements MasterRedis<String, User>{
 
     @Override
     @Bean("reactiveUserRedisTemplate")
-    public ReactiveRedisTemplate<String, User> reactiveMasterRedisTemplate(ReactiveRedisConnectionFactory factory) {
+    public ReactiveRedisTemplate<String, User> reactiveMasterRedisTemplate(@Qualifier("reactiveRedisConnectionFactory") ReactiveRedisConnectionFactory factory) {
         Jackson2JsonRedisSerializer<User> serializer = new Jackson2JsonRedisSerializer<>(User.class);
         RedisSerializationContext.RedisSerializationContextBuilder<String, User> builder =
                 RedisSerializationContext.newSerializationContext(new StringRedisSerializer());
