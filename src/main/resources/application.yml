@@ -1,15 +1,9 @@
 spring:
-  redis:
-    host: localhost
-    port: 6379
   graphql:
     schema:
-      location: classpath:/graphql/**/
-    graphiql:
-      enable: true
+      location: classpath*:/graphql/**/
     websocket:
       path: /graphql
-    cors:
-      allowed-origins: http://localhost:19006
+
 user:
   topic: sub:user:1

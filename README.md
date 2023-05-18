@@ -24,6 +24,39 @@
 
 <img width="924" alt="Graphql-Sample-Query" src="https://github.com/dwivna/ekaasaa/assets/22236663/fa0d8aa3-9550-400a-bcf1-d3ab002fed7b">
 
+## Docker Integration
+
+- Install Docker Desktop
+- Execute below command to pull latest images
+  ```
+   docker pull redis
+   docker pull openjdk:21-slim
+  
+  ```
+- Execute below command to run redis server on docker
+  ```
+   docker run --rm -p 6379:6379 -d --name redis-es1 redis redis-server
+  ```
+- Execute below command to create network on docker and connect it with redis container
+  ```
+   docker network create spring-redis-network
+   docker network connect spring-redis-network redis-es1
+  ``` 
+- Change ip address in application-docker.yml as shown below
+  ```
+   redis:
+     host: localhost #change it to your system ip
+  ```
+- Execute below command to build the application and create image of service
+  ```
+   mvn clean install
+   docker build -t ekaasaa-service .
+  ```    
+- Execute below command to start service in a container
+  ```
+   docker run -p 8082:8082 -it --rm --name ekaasaa ekaasaa-service
+  ``` 
+
 ## Contact Me
 
 - For contribution/suggestion/information contact me @dwivna

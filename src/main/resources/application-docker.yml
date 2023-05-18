@@ -1,0 +1,13 @@
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+  redis:
+    host: localhost #change it to your system ip
+    port: 6379
+
+server:
+  port: 8082
+
+# sudo lsof -i:6379
+# kill -9 50141
