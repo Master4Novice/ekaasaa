@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
         return this.subscriptionResponse();
     }
 
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 30000)
     public void subscribeApp() {
         List<User> userList = Objects.requireNonNull(this.getUsers().block());
         log.info("Size of fetched keys is {}", userList.size());
