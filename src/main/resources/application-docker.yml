@@ -1,10 +1,12 @@
 spring:
   graphql:
     graphiql:
-      enabled: true
-  redis:
-    host: localhost #change it to your system ip
-    port: 6379
+      enabled: false
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
 
 server:
   port: 8082
