@@ -1,9 +1,25 @@
 spring:
+  data:
+    redis:
+      password: ${REDIS_PASSWORD:}
   graphql:
+    graphiql:
+      enabled: false
     schema:
+      introspection:
+        enabled: false
       location: classpath*:/graphql/**/
     websocket:
       path: /graphql
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never
 
 user:
   topic: sub:user:1
